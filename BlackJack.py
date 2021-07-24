@@ -71,6 +71,7 @@ class BlackJack:
         self.dealerHand.cards += self.deck.draw(2)
 
     def showHands(self, showAll=False):
+        print()
         self.playerHand.printHand()
         self.dealerHand.printHand(showAll)
 
@@ -112,6 +113,11 @@ class BlackJack:
         print("You Won!!")
         sys.exit(0)
 
+    def playerTied(self):
+        self.showHands(showAll=True)
+        print("You Tied!!")
+        sys.exit(0)
+
     def checkPlayerScore(self):
         score = self.playerHand.getScore()
         if(score > 21):
@@ -120,11 +126,14 @@ class BlackJack:
             self.playerWon()
 
     def checkFinalScore(self):
-        if(self.playerHand.getScore() > self.dealerHand.getScore(countAll=True)):
+        playerScore = self.playerHand.getScore()
+        dealerScore = self.dealerHand.getScore(countAll=True)
+        if(playerScore > dealerScore):
             self.playerWon()
+        elif(playerScore == dealerScore):
+            self.playerTied()
         else:
             self.playerLost()
         
 
-b = BlackJack()
-b.startGame()
+BlackJack().startGame()
