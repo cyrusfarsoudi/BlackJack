@@ -1,0 +1,5 @@
+#!/usr/bin/python
+
+import BlackJack
+
+BlackJack.BlackJack.startGame()

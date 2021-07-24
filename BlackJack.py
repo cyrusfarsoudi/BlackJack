@@ -136,4 +136,3 @@ class BlackJack:
             self.playerLost()
         
 
-BlackJack().startGame()
